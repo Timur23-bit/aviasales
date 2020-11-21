@@ -4,13 +4,13 @@ class GetTikets {
     async getResource(rest) {
       // eslint-disable-next-line no-underscore-dangle
       const res = await fetch(`${this._apiBase}${rest}`);
-      const body = await res.json();
-      return body;
+      return res;
     }
 
     async getSearchId() {
       const res = await this.getResource('search');
-      return res;
+      const body = res.json();
+      return body;
     }
 }
 

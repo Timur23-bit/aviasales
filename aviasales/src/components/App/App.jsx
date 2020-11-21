@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ticket from '../../Service/get-tikets';
 import logo from '../logo/Logo.svg';
 import List from '../List/List';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import Spint from '../Spin/Spin';
+import 'antd/dist/antd.css';
+import Checkbox from '../Checkbox/Checkbox';
 
 export default function App() {
   const [tickets, setTickets] = useState([]);
   const [filter, setFilter] = useState('all');
-  let filTik = tickets;
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const price = tickets.map((item) => item).sort((a, b) => {
     if (a.price > b.price) return 1;
     if (a.price == b.price) return 0;
@@ -17,26 +22,37 @@ export default function App() {
     if (a.segments[0].duration == b.segments[0].duration) return 0;
     return -1;
   });
+  const errorMess = error ? <ErrorMessage error={error} /> : null;
+  let render = loading ? <Spint /> : <List dataBase={tickets} />;
 
-  if (tickets.length === 0) {
+  useEffect(() => {
     ticket.getSearchId().then((res) => {
       ticket.getResource(`tickets?searchId=${res.searchId}`)
-        .then((rt) => {
-          setTickets(rt.tickets.splice(0, 5));
+        .then(async (rt) => {
+          if (!rt.ok) {
+            setLoading(false);
+            throw new Error(`Error number ${rt.status}`);
+          }
+          const rest = await rt.json();
+          setTickets(rest.tickets.splice(0, 5));
+          setLoading(false);
+        })
+        .catch((err) => {
+          setError(err);
         });
     });
-  }
+  }, []);
 
   if (filter === 'all') {
-    filTik = tickets;
+    render = loading ? <Spint /> : <List dataBase={tickets} />;
   } else if (filter === 'no_stops') {
-    filTik = tickets.filter((item) => item.segments[0].stops.length == 0 || item.segments[1].stops.length == 0);
+    render = loading ? <Spint /> : <List dataBase={tickets.filter((item) => item.segments[0].stops.length == 0 || item.segments[1].stops.length == 0)} />;
   } else if (filter === 'one') {
-    filTik = tickets.filter((item) => item.segments[0].stops.length == 1 || item.segments[1].stops.length == 1);
+    render = loading ? <Spint /> : <List dataBase={tickets.filter((item) => item.segments[0].stops.length == 1 || item.segments[1].stops.length == 1)} />;
   } else if (filter === 'two') {
-    filTik = tickets.filter((item) => item.segments[0].stops.length == 2 || item.segments[1].stops.length == 2);
+    render = loading ? <Spint /> : <List dataBase={tickets.filter((item) => item.segments[0].stops.length == 2 || item.segments[1].stops.length == 2)} />;
   } else if (filter === 'three') {
-    filTik = tickets.filter((item) => item.segments[0].stops.length == 3 || item.segments[1].stops.length == 3);
+    render = loading ? <Spint /> : <List dataBase={tickets.filter((item) => item.segments[0].stops.length == 3 || item.segments[1].stops.length == 3)} />;
   }
 
   function checked(event) {
@@ -69,6 +85,28 @@ export default function App() {
     });
     event.target.className = 'sort__menu select';
   }
+  const filterBase = [
+    {
+      stops: 'Все',
+      fil: 'all',
+    },
+    {
+      stops: 'Без пересадок',
+      fil: 'no_stops',
+    },
+    {
+      stops: '1 пересадка',
+      fil: 'one',
+    },
+    {
+      stops: '2 пересадки',
+      fil: 'two',
+    },
+    {
+      stops: '3 пересадки',
+      fil: 'three',
+    },
+  ];
 
   return (
     <div className="art">
@@ -78,96 +116,14 @@ export default function App() {
       <div className="app">
         <div className="filter">
           <div className="filter__title">КОЛИЧЕСТВО ПЕРЕСАДОК</div>
-          <form>
-            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            <label className="filter__menu">
-              <input
-                type="checkbox"
-                onChange={(event) => {
-                  unChecked();
-                  event.target.checked = true;
-                  checked(event);
-                  setFilter('all');
-                }}
-              />
-              <span>Все</span>
-            </label>
-            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            <label
-              className="filter__menu"
-            >
-              <input
-                id="js1"
-                type="checkbox"
-                onChange={(event) => {
-                  if (event.target.checked) {
-                    setFilter('no_stops');
-                    unChecked();
-                    event.target.checked = true;
-                    checked(event);
-                  } else {
-                    setFilter('all');
-                    unChecked();
-                  }
-                }}
-              />
-              <span>Без пересадок</span>
-            </label>
-            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            <label className="filter__menu">
-              <input
-                type="checkbox"
-                onChange={(event) => {
-                  if (event.target.checked) {
-                    setFilter('one');
-                    checked(event);
-                    unChecked();
-                    event.target.checked = true;
-                  } else {
-                    setFilter('all');
-                    unChecked();
-                  }
-                }}
-              />
-              <span>1 пересадка</span>
-            </label>
-            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            <label className="filter__menu">
-              <input
-                type="checkbox"
-                onChange={(event) => {
-                  if (event.target.checked) {
-                    setFilter('two');
-                    checked(event);
-                    unChecked();
-                    event.target.checked = true;
-                  } else {
-                    setFilter('all');
-                    unChecked();
-                  }
-                }}
-              />
-              <span>2 пересадки</span>
-            </label>
-            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            <label className="filter__menu">
-              <input
-                type="checkbox"
-                onChange={(event) => {
-                  if (event.target.checked) {
-                    checked(event);
-                    unChecked();
-                    event.target.checked = true;
-                    setFilter('three');
-                  } else {
-                    unChecked();
-                    setFilter('all');
-                  }
-                }}
-              />
-              <span>3 пересадки</span>
-            </label>
-          </form>
+          {filterBase.map((it) => (
+            <Checkbox
+              item={it}
+              unChecked={unChecked}
+              setFilter={setFilter}
+              checked={checked}
+            />
+          ))}
         </div>
         <div className="orders">
           <div className="sort">
@@ -205,9 +161,8 @@ export default function App() {
             </div>
           </div>
           <ul className="list">
-            <List
-              dataBase={filTik}
-            />
+            {errorMess}
+            {render}
           </ul>
         </div>
       </div>

@@ -31,8 +31,14 @@ export default function Segment({ segments }) {
   }
 
   return (
-    <div className="segment">
-      <div className="distance">
+    <div
+      className="segment"
+      key={Math.random()}
+    >
+      <div
+        className="distance"
+        key={Math.random()}
+      >
         <p className="gray">
           {segments.origin}
           -
@@ -47,11 +53,17 @@ export default function Segment({ segments }) {
           {' '}
         </p>
       </div>
-      <div className="duration">
+      <div
+        key={Math.random()}
+        className="duration"
+      >
         <p className="gray">В ПУТИ</p>
         <p className="black">{duration}</p>
       </div>
-      <div className="stops">
+      <div
+        key={Math.random()}
+        className="stops"
+      >
         <p className="gray">{stop}</p>
         <p className="black">{segments.stops.join(', ')}</p>
       </div>
