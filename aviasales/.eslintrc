@@ -1,0 +1,16 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": ["airbnb"],
+  "rules": {
+    "no-console": "error",
+    "eqeqeq": "off",
+    "max-len": "off",
+    "no-param-reassign": "off",
+    "no-bitwise": "off"
+  },
+  "parser": "babel-eslint"
+}

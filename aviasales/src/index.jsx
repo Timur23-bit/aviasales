@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import App from "./components/App/App";
+import App from './components/App/App';
 
 ReactDOM.render(
-    <App />,
-  document.getElementById('root')
+  <App />,
+  document.getElementById('root'),
 );
-
