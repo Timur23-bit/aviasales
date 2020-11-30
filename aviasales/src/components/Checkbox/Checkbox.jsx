@@ -1,40 +1,63 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import * as actions from '../../Service/actions';
 
-export default function Checkbox({
-  item, unChecked, setFilter, checked,
+function Checkbox({
+  // eslint-disable-next-line react/prop-types
+  item, all, noAll, noStops, one, two, three,
 }) {
-  const { stops, fil } = item;
+  const { mess, bool } = item.fil;
+  let className = 'filter__menu';
+  if (bool) {
+    className = 'filter__menu active';
+  }
   return (
     <div>
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
       <label
-        className="filter__menu"
+        className={className}
       >
         <input
+          checked={bool}
           type="checkbox"
-          onChange={(event) => {
-            if (event.target.checked) {
-              unChecked();
-              checked(event);
-              event.target.checked = true;
-              setFilter(fil);
-            } else {
-              unChecked();
-              setFilter('all');
+          onChange={(e) => {
+            switch (mess) {
+              case 'Все':
+                return all(e.target.checked);
+              case 'Без пересадок':
+                noStops(e.target.checked);
+                return noAll();
+              case '1 пересадка':
+                one(e.target.checked);
+                return noAll();
+              case '2 пересадки':
+                two(e.target.checked);
+                return noAll();
+              case '3 пересадки':
+                three(e.target.checked);
+                return noAll();
+              default:
+                return one();
             }
           }}
         />
-        <span>{stops}</span>
+        <span>{mess}</span>
       </label>
     </div>
   );
 }
 
 Checkbox.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  item: PropTypes.object.isRequired,
-  unChecked: PropTypes.func.isRequired,
-  setFilter: PropTypes.func.isRequired,
-  checked: PropTypes.func.isRequired,
+  item: PropTypes.instanceOf(Object).isRequired,
+  all: PropTypes.func.isRequired,
+  noAll: PropTypes.func.isRequired,
+  noStops: PropTypes.func.isRequired,
+  one: PropTypes.func.isRequired,
+  two: PropTypes.func.isRequired,
+  three: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = (state) => state;
+
+export default connect(mapStateToProps, actions)(Checkbox);
