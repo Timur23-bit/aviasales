@@ -1,9 +1,11 @@
 class GetTikets {
-    _apiBase = 'https://front-test.beta.aviasales.ru/';
+    _apiBase = 'https://aviasales-test-api.java-mentor.com/';
 
     async getResource(rest) {
       // eslint-disable-next-line no-underscore-dangle
       const res = await fetch(`${this._apiBase}${rest}`);
+      // eslint-disable-next-line no-console
+      console.log(res);
       return res;
     }
 

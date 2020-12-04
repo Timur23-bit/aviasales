@@ -1,42 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ticket from '../../Service/get-tikets';
+import * as actions from '../../Service/actions';
 import logo from '../logo/Logo.svg';
 import List from '../List/List';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Spint from '../Spin/Spin';
 import 'antd/dist/antd.css';
 import Checkbox from '../Checkbox/Checkbox';
-import * as actions from '../../Service/actions';
 
 function App({
-  less, quickly, filter, sort,
+  // eslint-disable-next-line no-unused-vars
+  getId, getTickets, less, quickly, filter, sort, loading, error, tickets, stop, id,
 }) {
-  const [tickets, setTickets] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  // eslint-disable-next-line no-console,react/no-this-in-sfc
+  console.log(id);
+
+  if (!id) {
+    getId(id);
+  }
+
+  if (!stop && id) {
+    // eslint-disable-next-line no-console
+    console.log('+');
+    getTickets(id);
+  }
+
   let render = loading ? <Spint /> : <List dataBase={tickets} />;
   let ar = [];
 
   const errorMess = error ? <ErrorMessage error={error} /> : null;
-  useEffect(() => {
-    ticket.getSearchId().then((res) => {
-      ticket.getResource(`tickets?searchId=${res.searchId}`)
-        .then(async (rt) => {
-          if (!rt.ok) {
-            setLoading(false);
-            throw new Error(`Error number ${rt.status}`);
-          }
-          const rest = await rt.json();
-          setTickets(rest.tickets.splice(0, 5));
-          setLoading(false);
-        })
-        .catch((err) => {
-          setError(err);
-        });
-    });
-  }, []);
 
   if (filter[0].fil.bool) {
     ar = tickets;
@@ -162,11 +155,24 @@ App.propTypes = {
   sort: PropTypes.instanceOf(Object).isRequired,
   less: PropTypes.func.isRequired,
   quickly: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.instanceOf(Object).isRequired,
+  tickets: PropTypes.instanceOf(Array).isRequired,
+  getTickets: PropTypes.func.isRequired,
+  stop: PropTypes.bool.isRequired,
+  getId: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };
-
-const mapStateToProps = (state) => ({
-  filter: state.filter,
-  sort: state.sort,
-});
+const mapStateToProps = (state) => {
+  // eslint-disable-next-line no-console
+  console.log(state);
+  return {
+    filter: state.filter,
+    sort: state.sort,
+    loading: state.loading,
+    error: state.error,
+    tickets: state.tickets,
+  };
+};
 
 export default connect(mapStateToProps, actions)(App);
