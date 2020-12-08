@@ -8,13 +8,6 @@ export const two = (checked) => ({ type: 'TWO', checked });
 export const three = (checked) => ({ type: 'THREE', checked });
 export const quickly = () => ({ type: 'QUICK' });
 export const less = () => ({ type: 'LESS' });
-export const getId = () => (dispatch) => {
-  ticket.getSearchId().then((res) => {
-    // eslint-disable-next-line no-console
-    console.log(res);
-    dispatch({ type: 'GET_ID', id: res.searchId });
-  });
-};
 export const getTickets = (id) => (dispatch) => {
   ticket.getResource(`tickets?searchId=${id}`)
     .then(async (rt) => {
@@ -27,17 +20,23 @@ export const getTickets = (id) => (dispatch) => {
       dispatch({
         type: 'GET_TICKETS',
         payload: {
-          ticket: rest,
-          loading: false,
+          tickets: rest,
         },
       });
     })
     // eslint-disable-next-line no-undef
-    .catch((err) => (dispatch({
-      type: 'GET_ERROR',
-      payload: {
-        error: err,
-        loading: false,
-      },
-    })));
+    .catch((err) => {
+      dispatch({
+        type: 'GET_ERROR',
+        payload: {
+          error: err,
+          loading: false,
+        },
+      });
+    });
+};
+export const getId = () => (dispatch) => {
+  ticket.getSearchId().then((res) => {
+    dispatch({ type: 'GET_ID', id: res.searchId });
+  });
 };

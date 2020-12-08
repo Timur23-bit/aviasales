@@ -1,4 +1,6 @@
-
+.list {
+  position: relative;
+}
 
 .art {
   min-width: 320px!important;
@@ -10,6 +12,25 @@
   width: 100%;
 }
 
+.ant-select-selector {
+  display: none!important;
+}
+.ant-pagination-options {
+  display: none!important;
+}
+.ant-list-pagination {
+  text-align: center!important;
+}
+.display {
+  display: none!important;
+}
+.example {
+  position: absolute;
+  text-align: center;
+  bottom: -95px;
+  background-color: #E5E5E5;
+  width: 100%;
+}
 @media (min-width: 320px) and (max-width: 919px){
   body {
     background: #E5E5E5;
@@ -252,12 +273,7 @@
     flex-direction: column;
     width: 100%;
   }
-  .example {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+
   .ant-alert {
     display: flex;
     justify-content: center;
@@ -279,6 +295,11 @@
     padding: 0;
 
   }
+
+  .ant-alert-message {
+    text-align: center;
+  }
+
   .app {
     display: flex;
     justify-content: space-between;
@@ -436,13 +457,6 @@
     position: relative;
     padding: 9px 20px;
     display: flex;
-  }
-
-  .example {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50%;
   }
 
   .list {

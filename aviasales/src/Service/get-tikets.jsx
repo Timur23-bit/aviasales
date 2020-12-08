@@ -4,8 +4,9 @@ class GetTikets {
     async getResource(rest) {
       // eslint-disable-next-line no-underscore-dangle
       const res = await fetch(`${this._apiBase}${rest}`);
-      // eslint-disable-next-line no-console
-      console.log(res);
+      if (res.status == 500) {
+        return this.getResource(rest);
+      }
       return res;
     }
 

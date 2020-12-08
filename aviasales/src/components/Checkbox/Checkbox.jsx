@@ -13,7 +13,9 @@ function Checkbox({
     className = 'filter__menu active';
   }
   return (
-    <div>
+    <div
+      key={Math.random()}
+    >
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
       <label
         className={className}

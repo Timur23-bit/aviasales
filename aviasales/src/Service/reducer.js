@@ -37,10 +37,9 @@ const reducer = (
       cheaper: false,
     },
     tickets: [],
-    loading: true,
-    error: false,
-    stop: false,
-    id: 'xxx',
+    loading: false,
+    error: {},
+    id: '',
   },
   action,
 ) => {
@@ -204,17 +203,16 @@ const reducer = (
   }
   if (action.type === 'GET_TICKETS') {
     // eslint-disable-next-line no-console
-    console.log(state);
+    console.log('++++++++++++++++++++++++++++++++++++++++++++');
     return {
       ...state,
-      tickets: [...state.tickets, ...action.payload.ticket.tickets],
-      loading: action.payload.loading,
-      stop: action.payload.ticket.stop,
+      tickets: [...state.tickets, ...action.payload.tickets.tickets],
+      loading: action.payload.tickets.stop,
     };
   }
   if (action.type === 'GET_ID') {
     // eslint-disable-next-line no-console
-    console.log(state);
+    console.log('---------------------------------------------');
     return { ...state, id: action.id };
   }
   return state;
