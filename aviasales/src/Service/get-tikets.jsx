@@ -1,9 +1,9 @@
 class GetTikets {
-    _apiBase = 'https://aviasales-test-api.java-mentor.com/';
+    apiBase = 'https://aviasales-test-api.java-mentor.com/';
 
     async getResource(rest) {
       // eslint-disable-next-line no-underscore-dangle
-      const res = await fetch(`${this._apiBase}${rest}`);
+      const res = await fetch(`${this.apiBase}${rest}`);
       if (res.status == 500) {
         return this.getResource(rest);
       }

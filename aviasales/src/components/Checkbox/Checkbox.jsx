@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import * as actions from '../../Service/actions';
 
 function Checkbox({
-  // eslint-disable-next-line react/prop-types
   item, all, noAll, noStops, one, two, three,
 }) {
   const { mess, bool } = item.fil;

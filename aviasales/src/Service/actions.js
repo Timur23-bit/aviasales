@@ -15,8 +15,6 @@ export const getTickets = (id) => (dispatch) => {
         throw new Error(`Error number ${rt.status}`);
       }
       const rest = await rt.json();
-      // eslint-disable-next-line no-console
-      console.log(rest);
       dispatch({
         type: 'GET_TICKETS',
         payload: {
@@ -24,7 +22,6 @@ export const getTickets = (id) => (dispatch) => {
         },
       });
     })
-    // eslint-disable-next-line no-undef
     .catch((err) => {
       dispatch({
         type: 'GET_ERROR',

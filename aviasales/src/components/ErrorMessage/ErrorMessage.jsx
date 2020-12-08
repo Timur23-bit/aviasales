@@ -14,6 +14,5 @@ export default function ErrorMessage({ error }) {
 }
 
 ErrorMessage.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  error: PropTypes.object.isRequired,
+  error: PropTypes.instanceOf(Object).isRequired,
 };

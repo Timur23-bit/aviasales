@@ -72,6 +72,5 @@ export default function Segment({ segments }) {
 }
 
 Segment.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  segments: PropTypes.object.isRequired,
+  segments: PropTypes.instanceOf(Object).isRequired,
 };

@@ -45,8 +45,6 @@ const reducer = (
 ) => {
   if (action.type === 'ALL') {
     if (!state.filter[0].bool) {
-      // eslint-disable-next-line no-console
-      console.log('all');
       return {
         ...state,
         filter: state.filter.map((it) => ({
@@ -68,8 +66,6 @@ const reducer = (
     };
   }
   if (action.type === 'NO_ALL') {
-    // eslint-disable-next-line no-console
-    console.log('all');
     const ar = state.filter.filter((it) => it.fil.mess !== 'Все');
     const arr = ar.filter((it) => it.fil.bool);
     if (arr.length === 4) {
@@ -104,8 +100,6 @@ const reducer = (
     };
   }
   if (action.type === 'NO_STOPS') {
-    // eslint-disable-next-line no-console
-    console.log('no stop');
     return {
       ...state,
       filter: state.filter.map((it) => {
@@ -126,8 +120,6 @@ const reducer = (
     };
   }
   if (action.type === 'ONE') {
-    // eslint-disable-next-line no-console
-    console.log('one');
     return {
       ...state,
       filter: state.filter.map((it) => {
@@ -144,8 +136,6 @@ const reducer = (
     };
   }
   if (action.type === 'TWO') {
-    // eslint-disable-next-line no-console
-    console.log('two');
     return {
       ...state,
       filter: state.filter.map((it) => {
@@ -162,8 +152,6 @@ const reducer = (
     };
   }
   if (action.type === 'THREE') {
-    // eslint-disable-next-line no-console
-    console.log('three');
     return {
       ...state,
       filter: state.filter.map((it) => {
@@ -180,8 +168,6 @@ const reducer = (
     };
   }
   if (action.type === 'LESS') {
-    // eslint-disable-next-line no-console
-    console.log('less');
     return {
       ...state,
       sort: {
@@ -191,8 +177,6 @@ const reducer = (
     };
   }
   if (action.type === 'QUICK') {
-    // eslint-disable-next-line no-console
-    console.log('quick');
     return {
       ...state,
       sort: {
@@ -202,8 +186,6 @@ const reducer = (
     };
   }
   if (action.type === 'GET_TICKETS') {
-    // eslint-disable-next-line no-console
-    console.log('++++++++++++++++++++++++++++++++++++++++++++');
     return {
       ...state,
       tickets: [...state.tickets, ...action.payload.tickets.tickets],
@@ -211,8 +193,6 @@ const reducer = (
     };
   }
   if (action.type === 'GET_ID') {
-    // eslint-disable-next-line no-console
-    console.log('---------------------------------------------');
     return { ...state, id: action.id };
   }
   return state;

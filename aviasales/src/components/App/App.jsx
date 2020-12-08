@@ -87,8 +87,6 @@ function App({
     event.target.className = 'sort__menu select';
   }
 
-  // eslint-disable-next-line no-console
-  console.log(tickets);
   return (
     <div className="art">
       <div className="logo">
