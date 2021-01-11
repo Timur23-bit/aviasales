@@ -2,28 +2,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../Service/actions';
+import './Checkbox.css';
 
 function Checkbox({
   item, all, noAll, noStops, one, two, three,
 }) {
-  const { mess, bool } = item.fil;
-  let className = 'filter__menu';
-  if (bool) {
-    className = 'filter__menu active';
+  const { message, boolean } = item.filter;
+
+  function classNameFilterMenu() {
+    if (boolean) {
+      return 'filter__menu active';
+    }
+    return 'filter__menu';
   }
+
   return (
     <div
       key={Math.random()}
     >
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
       <label
-        className={className}
+        className={classNameFilterMenu()}
       >
         <input
-          checked={bool}
+          checked={boolean}
           type="checkbox"
           onChange={(e) => {
-            switch (mess) {
+            switch (message) {
               case 'Все':
                 return all(e.target.checked);
               case 'Без пересадок':
@@ -43,7 +48,7 @@ function Checkbox({
             }
           }}
         />
-        <span>{mess}</span>
+        <span>{message}</span>
       </label>
     </div>
   );

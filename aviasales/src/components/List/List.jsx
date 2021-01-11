@@ -4,6 +4,7 @@ import { List } from 'antd';
 import Spint from '../Spin/Spin';
 import logotip from '../logo/S7 Logo (1).svg';
 import Segment from '../Segment/Segment';
+import './List.css';
 
 export default function Lists({ dataBase }) {
   if (dataBase.length == 0) {
@@ -16,9 +17,8 @@ export default function Lists({ dataBase }) {
       pagination={{
         pageSize: 5,
       }}
-      key={Math.random()}
       dataSource={dataBase}
-      renderItem={(item) => {
+      renderItem={(item, i) => {
         const price = (str) => {
           const prices = String(str);
           if (prices.length > 5) {
@@ -33,7 +33,7 @@ export default function Lists({ dataBase }) {
         return (
           <li
             className="card"
-            key={Math.random()}
+            key={i}
           >
             <div
               className="card__header"

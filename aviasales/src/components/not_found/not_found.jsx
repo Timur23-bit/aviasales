@@ -1,5 +1,6 @@
 import { Alert } from 'antd';
 import React from 'react';
+import './not_found.css';
 
 export default function NotFound() {
   return (

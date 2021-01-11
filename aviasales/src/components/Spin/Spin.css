@@ -1,0 +1,19 @@
+@media (min-width: 320px) and (max-width: 919px){
+    .example {
+        position: absolute;
+        text-align: center;
+        bottom: 0;
+        background-color: #E5E5E5;
+        width: 100%;
+    }
+}
+
+@media (min-width: 920px) {
+    .example {
+        position: absolute;
+        text-align: center;
+        bottom: 70px;
+        background-color: #E5E5E5;
+        width: 100%;
+    }
+}

@@ -1,0 +1,79 @@
+.list {
+  position: relative;
+  height: 100%;
+}
+
+.art {
+  min-width: 320px!important;
+  max-width: 900px!important;
+}
+
+#root, html, body {
+  background: #E5E5E5;
+  width: 100%;
+  height: 100%;
+}
+
+.ant-select-selector {
+  display: none!important;
+}
+.ant-pagination-options {
+  display: none!important;
+}
+.ant-list-pagination {
+  text-align: center!important;
+}
+.display {
+  display: none!important;
+}
+
+@media (min-width: 320px) and (max-width: 919px){
+  body {
+    background: #E5E5E5;
+    padding: 0;
+  }
+
+  ul,
+  li {
+    padding: 0;
+    margin: 0;
+  }
+
+  input {
+    margin-right: 10px;
+  }
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media (min-width: 920px) {
+  body {
+    height: 100vh;
+    background: #E5E5E5;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul,
+  li {
+    padding: 0;
+    margin: 0;
+  }
+
+  input {
+    margin-right: 10px;
+  }
+
+  p {
+    padding: 0;
+    margin: 0!important;
+  }
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("./Resource/OpenSans-Light.ttf");
+}

@@ -1,0 +1,100 @@
+@media (min-width: 320px) and (max-width: 919px){
+    .card {
+        background: white;
+        width: 100%;
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        font-family: Open Sans, serif;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 18px;
+        letter-spacing: 0.5px;
+        text-align: left;
+        padding: 20px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+    .price {
+        font-family: Open Sans, sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 24px;
+        color: #2196F3;
+    }
+
+    .card__header {
+        width: 100%;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-bottom: 10px;
+        align-items: center;
+    }
+
+    .logotip {
+        grid-column: 3;
+    }
+
+    .orders {
+        width: 100%;
+        font-family: Open Sans, serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 20px;
+
+    }
+}
+
+@media (min-width: 920px) {
+
+    .card {
+        background: white;
+        height: 182px;
+        width: 100%;
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        font-family: Open Sans, serif;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 18px;
+        letter-spacing: 0.5px;
+        text-align: left;
+        padding: 20px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+    .price {
+        font-family: Open Sans, sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 24px;
+        color: #2196F3;
+    }
+
+    .card__header {
+        width: 100%;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-bottom: 20px;
+        align-items: center;
+    }
+
+    .logotip {
+        grid-column: 3;
+    }
+
+    .list {
+        background-color: #E5E5E5;
+        height: 100%;
+    }
+}

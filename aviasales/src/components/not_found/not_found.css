@@ -1,0 +1,31 @@
+@media (min-width: 320px) and (max-width: 919px){
+    .ant-alert {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        font-weight: 600;
+        font-size: 52px!important;
+        opacity: 0.5;
+    }
+    .ant-alert-message {
+        text-align: center;
+    }
+}
+
+@media (min-width: 920px) {
+    .ant-alert-message {
+        text-align: center;
+    }
+
+    .ant-alert {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+        font-weight: 600;
+        font-size: 52px!important;
+        opacity: 0.5;
+    }
+}

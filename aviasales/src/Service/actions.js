@@ -1,39 +1,55 @@
 import ticket from './get-tikets';
+import * as names from './actionsName';
 
-export const all = (checked) => ({ type: 'ALL', checked });
-export const noAll = (checked) => ({ type: 'NO_ALL', checked });
-export const noStops = (checked) => ({ type: 'NO_STOPS', checked });
-export const one = (checked) => ({ type: 'ONE', checked });
-export const two = (checked) => ({ type: 'TWO', checked });
-export const three = (checked) => ({ type: 'THREE', checked });
-export const quickly = () => ({ type: 'QUICK' });
-export const less = () => ({ type: 'LESS' });
+const {
+  alls, noAlls, noStopes, ones, twos, threes, quicks, lesses, tickets, ids, errors,
+} = names;
+
+export const all = (checked) => ({ type: alls, checked });
+export const noAll = () => ({ type: noAlls });
+export const noStops = (checked) => ({ type: noStopes, checked });
+export const one = (checked) => ({ type: ones, checked });
+export const two = (checked) => ({ type: twos, checked });
+export const three = (checked) => ({ type: threes, checked });
+export const quickly = () => ({ type: quicks });
+export const less = () => ({ type: lesses });
 export const getTickets = (id) => (dispatch) => {
   ticket.getResource(`tickets?searchId=${id}`)
-    .then(async (rt) => {
-      if (!rt.ok) {
-        throw new Error(`Error number ${rt.status}`);
+    .then(async (result) => {
+      if (!result.ok) {
+        throw new Error(`Error number ${result.status}`);
       }
-      const rest = await rt.json();
-      dispatch({
-        type: 'GET_TICKETS',
-        payload: {
-          tickets: rest,
-        },
-      });
+      const rest = await result.json();
+      if (!rest.stop) {
+        dispatch({
+          type: tickets,
+          payload: {
+            tickets: rest,
+          },
+          count: 1,
+        });
+      } else {
+        dispatch({
+          type: tickets,
+          payload: {
+            tickets: rest,
+          },
+        });
+      }
     })
     .catch((err) => {
       dispatch({
-        type: 'GET_ERROR',
+        type: errors,
         payload: {
           error: err,
           loading: false,
         },
+        count: 1,
       });
     });
 };
 export const getId = () => (dispatch) => {
   ticket.getSearchId().then((res) => {
-    dispatch({ type: 'GET_ID', id: res.searchId });
+    dispatch({ type: ids, id: res.searchId });
   });
 };

@@ -1,0 +1,299 @@
+@media (min-width: 320px) and (max-width: 919px){
+
+    .filter {
+        background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        font-family: Open Sans, serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 20px;
+    }
+
+    .filter__title {
+        padding: 20px 20px 10px;
+        font-weight: 600;
+    }
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        padding: 30px;
+    }
+
+    .orders {
+        width: 100%;
+        font-family: Open Sans, serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 20px;
+
+    }
+
+    .sort {
+        background-color: #fff;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        color: black;
+        font-family: Open Sans, serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .select {
+        background: #2196F3;
+        color: white;
+    }
+
+    .sort__menu {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .active {
+        background-color: #F1FCFF;
+    }
+
+    .filter__menu {
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        padding: 10px 20px;
+        display: flex;
+    }
+
+    .filter__menu input[type=checkbox] {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+        display: block;
+        width: 0;
+        height: 0;
+    }
+
+    .filter__menu span {
+        display: inline-block;
+        position: relative;
+        padding: 0 0 0 35px;
+        line-height: 22px;
+    }
+
+    .filter__menu span:before {
+        content: "";
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: background 0.3s ease;
+        background: url('../logo/Checkbox1.svg') 0 0 no-repeat;
+    }
+
+    .filter__menu input[type=checkbox]:checked + span:before {
+        background-image: url('../logo/Checkbox.svg');
+    }
+
+    input[type=checkbox]:checked + .filter__menu{
+        background-color: gray;
+    }
+
+    .filter__menu input[type=checkbox]:checked {
+        background-color: black;
+    }
+
+    .focused span:before {
+        box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    }
+
+    .filter__menu span:hover:before {
+        filter: brightness(110%);
+    }
+
+    .filter__menu span:active:before {
+        filter: brightness(80%);
+
+    }
+
+    .art {
+        width: 100%;
+    }
+
+    .filter {
+        width: 100%;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        font-family: Open Sans, serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 20px;
+        margin-bottom: 20px;
+    }
+
+    .app {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        width: 100%;
+    }
+
+}
+
+@media (min-width: 920px) {
+    .app {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .filter {
+        height: 100%;
+        width: 35%;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        font-family: Open Sans, serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 20px;
+        margin-right: 20px;
+    }
+
+    .filter__title {
+        padding: 20px 20px 10px;
+        font-weight: 600;
+    }
+
+    .logo {
+        display: flex;
+        justify-content: space-around;
+        padding: 30px 30px 30px 0;
+    }
+
+    .art {
+        width: 800px;
+        margin: 0 auto;
+    }
+
+    .orders {
+        width: 100%;
+        font-family: Open Sans, serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 20px;
+
+    }
+
+    .sort {
+        background-color: #fff;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        color: black;
+        font-family: Open Sans, serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .select {
+        background: #2196F3;
+        color: white;
+    }
+
+    .sort__menu {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .active {
+        background-color: #F1FCFF;
+    }
+
+    .filter__menu {
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        padding: 9px 20px;
+        display: flex;
+    }
+
+    .ant-alert {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+        font-weight: 600;
+        font-size: 52px!important;
+        opacity: 0.5;
+    }
+
+    .filter__menu input[type=checkbox] {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+        display: block;
+        width: 0;
+        height: 0;
+    }
+
+    .filter__menu span {
+        display: inline-block;
+        position: relative;
+        padding: 0 0 0 35px;
+        line-height: 22px;
+    }
+
+    .filter__menu span:before {
+        content: "";
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: background 0.3s ease;
+        background: url('../logo/Checkbox1.svg') 0 0 no-repeat;
+    }
+
+    .filter__menu input[type=checkbox]:checked + span:before {
+        background-image: url('../logo/Checkbox.svg');
+    }
+
+    .focused span:before {
+        box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    }
+
+    .filter__menu span:hover:before {
+        filter: brightness(110%);
+    }
+
+    .filter__menu span:active:before {
+        filter: brightness(80%);
+
+    }
+
+}
