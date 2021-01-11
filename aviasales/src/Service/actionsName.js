@@ -1,0 +1,11 @@
+export const ids = 'GET_ID';
+export const errors = 'GET_ERROR';
+export const tickets = 'GET_TICKETS';
+export const alls = 'ALL';
+export const noAlls = 'NO_ALL';
+export const noStopes = 'NO_STOPS';
+export const ones = 'ONE';
+export const twos = 'TWO';
+export const threes = 'THREE';
+export const quicks = 'QUICK';
+export const lesses = 'LESS';
